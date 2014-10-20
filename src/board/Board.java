@@ -58,6 +58,12 @@ public class Board {
 		board[rows - 1 - ((rows/2)/2 + 1)][cols - 1] = AMAZON;
 	}
 	
+	/*placing new Arrow at position (r,c)*/
+	private void placeArrow(int r, int c)
+	{
+		board[r][c]=1;
+	}
+	
 	@Override
 	public String toString() {
 		StringBuilder sb = new StringBuilder();
