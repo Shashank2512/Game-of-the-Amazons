@@ -11,8 +11,8 @@ public class Moves
 	/*shoots arrow*/
 	public int get_size()
 	{
-		for(Board b : mov)
-			System.out.println(b.get_board());
+		//for(Board b : mov)
+			//System.out.println(b.get_board());
 		return mov.size();
 	}
 	public ArrayList<Board> return_moves()
@@ -30,6 +30,7 @@ public class Moves
 		int c=b.col;
 		//System.out.println("Entering: "+ b.toString());
 		Board next = new Board(b);
+		Heuristic_Function h = new Heuristic_Function();
 		next.board[posx][posy] = player;
 		next.board[pos[amazon][0]][pos[amazon][1]] = ' ';
 		if(player == WHITE)
@@ -49,6 +50,7 @@ public class Moves
 			{
 				Board finish = new Board(next);
 				finish.board[i][posy] = 'A';
+				finish.heuristic_val=h.compute_heuristic(finish);
 				mov.add(finish);
 			}
 			else
@@ -61,6 +63,7 @@ public class Moves
 			{
 				Board finish = new Board(next);
 				finish.board[i][posy] = 'A';
+				finish.heuristic_val=h.compute_heuristic(finish);
 				mov.add(finish);
 			}
 			else
@@ -73,6 +76,7 @@ public class Moves
 			{
 				Board finish = new Board(next);
 				finish.board[posx][j] = 'A';
+				finish.heuristic_val=h.compute_heuristic(finish);
 				mov.add(finish);
 			}
 			else
@@ -85,6 +89,7 @@ public class Moves
 			{
 				Board finish = new Board(next);
 				finish.board[posx][j] = 'A';
+				finish.heuristic_val=h.compute_heuristic(finish);
 				mov.add(finish);
 			}
 			else
@@ -99,6 +104,7 @@ public class Moves
 				{
 					Board finish = new Board(next);
 					finish.board[i][j] = 'A';
+					finish.heuristic_val=h.compute_heuristic(finish);
 					mov.add(finish);
 					--i;
 					--j;
@@ -116,6 +122,7 @@ public class Moves
 				{
 					Board finish = new Board(next);
 					finish.board[i][j] = 'A';
+					finish.heuristic_val=h.compute_heuristic(finish);
 					mov.add(finish);
 					++i;
 					--j;
@@ -133,6 +140,7 @@ public class Moves
 				{
 					Board finish = new Board(next);
 					finish.board[i][j] = 'A';
+					finish.heuristic_val=h.compute_heuristic(finish);
 					mov.add(finish);
 					--i;
 					++j;
@@ -150,6 +158,7 @@ public class Moves
 				{
 					Board finish = new Board(next);
 					finish.board[i][j] = 'A';
+					finish.heuristic_val=h.compute_heuristic(finish);
 					mov.add(finish);
 					++i;
 					++j;
