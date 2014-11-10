@@ -11,13 +11,24 @@ public class Moves
 	/*shoots arrow*/
 	public int get_size()
 	{
+		for(Board b : mov)
+			System.out.println(b.get_board());
 		return mov.size();
+	}
+	public ArrayList<Board> return_moves()
+	{
+		return mov;
+	}
+	public void clean_mov()
+	{
+		mov=new ArrayList<>();
 	}
 	public void shoot_arrow(Board b, int amazon, int posx, int posy, char player)
 	{
 		/*down*/
 		int r=b.row;
 		int c=b.col;
+		//System.out.println("Entering: "+ b.toString());
 		Board next = new Board(b);
 		next.board[posx][posy] = player;
 		next.board[pos[amazon][0]][pos[amazon][1]] = ' ';
@@ -147,6 +158,7 @@ public class Moves
 					break;
 			}
 		}
+		//System.out.println("Exiting: "+ b.toString());
 	}
 	public void gen_move(Board b, char player)
 	{

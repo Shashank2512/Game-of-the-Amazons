@@ -6,7 +6,7 @@ import java.util.Arrays;
 public class Board 
 {
 	
-	public static int MAX = 6;
+	public static int MAX = 4;
 	public char [][] board;
 	public int row, col;
 	public int[][] locWhiteAmazon=new int[4][2];
