@@ -11,6 +11,7 @@ public class Board
 	public int row, col;
 	public int[][] locWhiteAmazon=new int[4][2];
 	public int[][] locBlackAmazon=new int[4][2];
+	public int heuristic_val;
 	//public int[][] arrow_loc=new int[MAX*MAX][2];
 	
 	public Board()

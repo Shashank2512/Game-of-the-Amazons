@@ -27,7 +27,7 @@ public class Tree_Making
 		queue.addLast(tmp);
 		int cnt=0;
 		int var_1=1, var_2=0;
-		while(!queue.isEmpty() && cnt<=85000)
+		while(!queue.isEmpty() && cnt<=50000)
 		{
 			cnt++;
 			tmp=queue.getFirst();
@@ -50,8 +50,12 @@ public class Tree_Making
 		System.out.println(player_white);
 		System.out.println(tree.get(par.size()-1).size());
 		System.out.println(par.get(par.size()-1));
-		//for(ArrayList<Board> ar:tree)
-		//{
+		int add=0;
+		for(ArrayList<Board> ar:tree)
+		{
+			add+=ar.size();
+		}
+		System.out.println(add);
 			//for(Board c : ar)
 				//System.out.println(c.toString());
 		//}
