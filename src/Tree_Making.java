@@ -27,12 +27,14 @@ public class Tree_Making
 		queue.addLast(tmp);
 		int cnt=0;
 		int var_1=1, var_2=0;
+		Heuristic_Function h = new Heuristic_Function();
 		while(!queue.isEmpty() && cnt<=50000)
 		{
 			cnt++;
 			tmp=queue.getFirst();
 			queue.removeFirst();
 			var_1--;
+			tmp.heuristic_val=h.compute_heuristic(tmp);
 			par.add(tmp);
 			move.gen_move(tmp, player_white==true?'W':'B');
 			bache=move.return_moves();

@@ -50,7 +50,7 @@ public class Moves
 			{
 				Board finish = new Board(next);
 				finish.board[i][posy] = 'A';
-				finish.heuristic_val=h.compute_heuristic(finish);
+				//finish.heuristic_val=h.compute_heuristic(finish);
 				mov.add(finish);
 			}
 			else
@@ -63,7 +63,7 @@ public class Moves
 			{
 				Board finish = new Board(next);
 				finish.board[i][posy] = 'A';
-				finish.heuristic_val=h.compute_heuristic(finish);
+				//finish.heuristic_val=h.compute_heuristic(finish);
 				mov.add(finish);
 			}
 			else
@@ -76,7 +76,7 @@ public class Moves
 			{
 				Board finish = new Board(next);
 				finish.board[posx][j] = 'A';
-				finish.heuristic_val=h.compute_heuristic(finish);
+				//finish.heuristic_val=h.compute_heuristic(finish);
 				mov.add(finish);
 			}
 			else
@@ -89,7 +89,7 @@ public class Moves
 			{
 				Board finish = new Board(next);
 				finish.board[posx][j] = 'A';
-				finish.heuristic_val=h.compute_heuristic(finish);
+				//finish.heuristic_val=h.compute_heuristic(finish);
 				mov.add(finish);
 			}
 			else
@@ -104,7 +104,7 @@ public class Moves
 				{
 					Board finish = new Board(next);
 					finish.board[i][j] = 'A';
-					finish.heuristic_val=h.compute_heuristic(finish);
+					//finish.heuristic_val=h.compute_heuristic(finish);
 					mov.add(finish);
 					--i;
 					--j;
@@ -122,7 +122,7 @@ public class Moves
 				{
 					Board finish = new Board(next);
 					finish.board[i][j] = 'A';
-					finish.heuristic_val=h.compute_heuristic(finish);
+					//finish.heuristic_val=h.compute_heuristic(finish);
 					mov.add(finish);
 					++i;
 					--j;
@@ -140,7 +140,7 @@ public class Moves
 				{
 					Board finish = new Board(next);
 					finish.board[i][j] = 'A';
-					finish.heuristic_val=h.compute_heuristic(finish);
+					//finish.heuristic_val=h.compute_heuristic(finish);
 					mov.add(finish);
 					--i;
 					++j;
@@ -158,7 +158,7 @@ public class Moves
 				{
 					Board finish = new Board(next);
 					finish.board[i][j] = 'A';
-					finish.heuristic_val=h.compute_heuristic(finish);
+					//finish.heuristic_val=h.compute_heuristic(finish);
 					mov.add(finish);
 					++i;
 					++j;
