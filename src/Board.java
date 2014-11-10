@@ -27,9 +27,20 @@ public class Board
 	
 	public Board(Board tmp)
 	{
-		this.locWhiteAmazon=tmp.locWhiteAmazon;
+		for(int i=0;i<4;++i)
+		{
+			this.locWhiteAmazon[i][0]=tmp.locWhiteAmazon[i][0];
+			this.locWhiteAmazon[i][1]=tmp.locWhiteAmazon[i][1];
+			this.locBlackAmazon[i][0]=tmp.locBlackAmazon[i][0];
+			this.locBlackAmazon[i][1]=tmp.locBlackAmazon[i][1];
+		}
+		this.board=new char[MAX][MAX];
+		for(int i=0;i<MAX;++i)
+			for(int j=0;j<MAX;++j)
+				this.board[i][j]=tmp.board[i][j];
+		/*this.locWhiteAmazon=tmp.locWhiteAmazon;
 		this.locBlackAmazon=tmp.locBlackAmazon;
-		this.board=tmp.board;
+		this.board=tmp.board;*/
 		this.row=tmp.row;
 		this.col=tmp.col;
 	}
