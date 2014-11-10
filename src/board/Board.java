@@ -4,6 +4,11 @@ package board;
  * Represents a single state in the game
  */
 public class Board {
+	
+	public static void main(String[] args) {
+		
+		System.out.println(new Board(10, 10));
+	}
 
 	public static final int EMPTY = 0;
 	public static final int ARROW = 1;
@@ -43,18 +48,18 @@ public class Board {
 		board[(rows/2)/2 + 1][0] = AMAZON;
 		whiteAmazons[1] = new int[] {0, (cols/2)/2 + 1};
 		board[0][(cols/2)/2 + 1] = AMAZON;
-		whiteAmazons[2] = new int[] {0, cols - (cols/2)/2 + 1};
+		whiteAmazons[2] = new int[] {0, cols - 1 - (cols/2)/2 + 1};
 		board[0][cols - 1 - ((cols/2)/2 + 1)] = AMAZON;
 		whiteAmazons[3] = new int[] {(rows/2)/2 + 1, cols - 1};
 		board[(rows/2)/2 + 1][cols - 1] = AMAZON;
 		
-		blackAmazons[0] = new int[] {rows - (rows/2)/2 + 1, 0};
+		blackAmazons[0] = new int[] {rows - 1 - (rows/2)/2 + 1, 0};
 		board[rows - 1 - ((rows/2)/2 + 1)][0] = AMAZON;
 		blackAmazons[1] = new int[] {rows - 1, (cols/2)/2 + 1};
 		board[rows - 1][(cols/2)/2 + 1] = AMAZON;
-		blackAmazons[2] = new int[] {rows - 1, cols - (cols/2)/2 + 1};
+		blackAmazons[2] = new int[] {rows - 1, cols - 1 - (cols/2)/2 + 1};
 		board[rows - 1][cols - 1 - ((cols/2)/2 + 1)] = AMAZON;
-		blackAmazons[3] = new int[] {rows - (rows/2)/2 + 1, cols - 1};
+		blackAmazons[3] = new int[] {rows - 1 - (rows/2)/2 + 1, cols - 1};
 		board[rows - 1 - ((rows/2)/2 + 1)][cols - 1] = AMAZON;
 	}
 	
