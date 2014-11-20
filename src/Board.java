@@ -10,6 +10,8 @@ public class Board implements Comparable<Board>{
 	public int[][] locWhiteAmazon=new int[4][2];
 	public int[][] locBlackAmazon=new int[4][2];
 	public int heuristic_val;
+	public int white_moves, black_moves;
+	public Board parent;
 
 	public Board()
 	{
@@ -20,6 +22,7 @@ public class Board implements Comparable<Board>{
 		row = n;
 		col = n;
 		board=new char[n][n];
+		parent = null;
 		initialize(n);
 	}
 

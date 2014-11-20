@@ -34,6 +34,8 @@ public class Tree_Making
 			queue.removeFirst();
 			var_1--;
 			tmp.heuristic_val=Heuristic_Function.compute_heuristic(tmp);
+			tmp.black_moves=Heuristic_Function.get_black_size();
+			tmp.white_moves=Heuristic_Function.get_white_size();
 			par.add(tmp);
 			move.gen_move(tmp, player_white==true?'W':'B');
 			bache=move.return_moves();
