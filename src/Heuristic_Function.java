@@ -1,7 +1,7 @@
 /*
  * @author: Ashish Khatkar and Prasant Chidella
  */
-public class Heuristic_Function 
+public class Heuristic_Function
 {
 	public static int compute_heuristic(Board b)
 	{
@@ -13,7 +13,6 @@ public class Heuristic_Function
 	 */
 	private static int mobility_evaluator(Board b)
 	{
-		int heuristic_val=0;
 		Moves mov=new Moves();
 		mov.gen_move(b, 'W');
 		int white_size=mov.get_size();

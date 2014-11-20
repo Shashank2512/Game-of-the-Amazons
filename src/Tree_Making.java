@@ -1,9 +1,9 @@
 /*
  * @author : Ashish Khatkar and Prasant Chidella
  */
-import java.util.*;
-import java.io.*;
-public class Tree_Making 
+import java.util.ArrayList;
+import java.util.LinkedList;
+public class Tree_Making
 {
 	public static ArrayList<ArrayList<Board>> tree=new ArrayList<ArrayList<Board>>();
 	public static ArrayList<Board> par=new ArrayList<Board>();
@@ -27,14 +27,13 @@ public class Tree_Making
 		queue.addLast(tmp);
 		int cnt=0;
 		int var_1=1, var_2=0;
-		Heuristic_Function h = new Heuristic_Function();
 		while(!queue.isEmpty() && cnt<=50000)
 		{
 			cnt++;
 			tmp=queue.getFirst();
 			queue.removeFirst();
 			var_1--;
-			tmp.heuristic_val=h.compute_heuristic(tmp);
+			tmp.heuristic_val=Heuristic_Function.compute_heuristic(tmp);
 			par.add(tmp);
 			move.gen_move(tmp, player_white==true?'W':'B');
 			bache=move.return_moves();
@@ -64,7 +63,7 @@ public class Tree_Making
 	}
 	public long get_size()
 	{
-		return (long)tree.size();
+		return tree.size();
 	}
 }
 

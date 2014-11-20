@@ -1,8 +1,8 @@
 /*
  * @author : Ashish Khatkar and Prasant Chidella
  */
-import java.util.*;
-public class Moves 
+import java.util.ArrayList;
+public class Moves
 {
 	public static ArrayList<Board> mov= new ArrayList<Board>();
 	public static char WHITE = 'W';
@@ -30,7 +30,6 @@ public class Moves
 		int c=b.col;
 		//System.out.println("Entering: "+ b.toString());
 		Board next = new Board(b);
-		Heuristic_Function h = new Heuristic_Function();
 		next.board[posx][posy] = player;
 		next.board[pos[amazon][0]][pos[amazon][1]] = ' ';
 		if(player == WHITE)
