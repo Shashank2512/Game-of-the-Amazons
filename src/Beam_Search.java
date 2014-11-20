@@ -1,8 +1,10 @@
 /*
  * @author: Ashish Khatkar and Prasant Chidella
  */
-import java.util.*;
-public class Beam_Search 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.LinkedList;
+public class Beam_Search
 {
 	/*
 	 * To do : Add beam search code
@@ -31,16 +33,22 @@ public class Beam_Search
 		LinkedList<Board> queue = new LinkedList<Board> ();
 		queue.addFirst(b);
 		boolean flag=true;
-		while(!queue.isEmpty())
+		while(true)
 		{
 			ArrayList<Board> next = new ArrayList<Board> ();
+			System.out.println(queue.size());
+			System.out.println(queue.getFirst());
+			System.out.println(queue.getFirst().parent);
+			System.out.println(next.size());
 			while(!queue.isEmpty())
 			{
 				Board tp = queue.getLast();
 				queue.removeLast();
 				Moves next_moves = new Moves();
-				next_moves.gen_move(b,player);
-				for(Board tmp : next_moves.return_moves())
+				next_moves.gen_move(tp, player);
+				ArrayList<Board> ar = next_moves.return_moves();
+				next_moves.clean_mov();
+				for(Board tmp : ar)
 				{
 					Moves tmp_moves = new Moves();
 					tmp_moves.gen_move(tmp, player=='W'?'B':'W');
@@ -48,6 +56,7 @@ public class Beam_Search
 					tmp_moves.clean_mov();
 					tmp_moves.gen_move(tmp, player);
 					int cur_player_size = tmp_moves.get_size();
+					tmp_moves.clean_mov();
 					if(player=='W')
 					{
 						if(opp_player_size==0)
@@ -65,17 +74,6 @@ public class Beam_Search
 					tmp.parent = tp;
 					next.add(tmp);
 				}
-				/*next_moves.gen_move(b, player=='W'?'B':'W');
-				int opp_player_size = next_moves.get_size();
-				next_moves.clean_mov();
-				next_moves.gen_move(b, player);
-				int cur_player_size = next_moves.get_size();
-				next.addAll(next_moves.return_moves());
-				/*if(next_moves.return_moves().size()==0)
-				{
-					flag=false;
-					break;
-				}*/
 			}
 			if(player=='W')
 				Collections.sort(next, new WhiteComparator());
@@ -88,11 +86,15 @@ public class Beam_Search
 				queue.add(tz);
 				cnt++;
 				to_add.add(tz);
-				if(cnt>1000)
+				if(cnt>10000)
 					break;
 			}
 			win.add(to_add);
 			player = player=='W'?'B':'W';
+
+			if (queue.isEmpty()) {
+				break;
+			}
 		}
 		System.out.println(player);
 	}
