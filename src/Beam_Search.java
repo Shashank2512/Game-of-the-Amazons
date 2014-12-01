@@ -4,6 +4,7 @@
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.LinkedList;
+import java.util.Stack;
 public class Beam_Search
 {
 	/*
@@ -12,8 +13,10 @@ public class Beam_Search
 	 */
 	//public static ArrayList<Board> win;
 	public static ArrayList<ArrayList<Board>> win;
-	public static final int beam_size = 10000;
+	public static final int beam_size = 50;
 	public static int inf = 100000000;
+	public static ArrayList<Board> gamesWon = new ArrayList<Board>();
+	public static ArrayList<Board> gamesLost = new ArrayList<Board>();
 	public static ArrayList<ArrayList<Board>> compute_heuristic_path(Board b)
 	{
 		beam_search(b);
@@ -27,6 +30,7 @@ public class Beam_Search
 	}
 	public static void beam_search(Board b)
 	{
+		b.parent = null;
 		win = new ArrayList<ArrayList<Board>> ();
 		//win.add(b);
 		char player = 'W';
@@ -36,10 +40,10 @@ public class Beam_Search
 		while(true)
 		{
 			ArrayList<Board> next = new ArrayList<Board> ();
-			System.out.println(queue.size());
-			System.out.println(queue.getFirst());
-			System.out.println(queue.getFirst().parent);
-			System.out.println(next.size());
+//			System.out.println(queue.size());
+//			System.out.println(queue.getFirst());
+//			System.out.println(queue.getFirst().parent);
+//			System.out.println(next.size());
 			while(!queue.isEmpty())
 			{
 				Board tp = queue.getLast();
@@ -50,6 +54,7 @@ public class Beam_Search
 				next_moves.clean_mov();
 				for(Board tmp : ar)
 				{
+//					tmp.parent = tp;
 					Moves tmp_moves = new Moves();
 					tmp_moves.gen_move(tmp, player=='W'?'B':'W');
 					int opp_player_size = tmp_moves.get_size();
@@ -59,15 +64,19 @@ public class Beam_Search
 					tmp_moves.clean_mov();
 					if(player=='W')
 					{
-						if(opp_player_size==0)
+						if(opp_player_size==0) {
 							tmp.heuristic_val = -inf;
+							gamesWon.add(tmp);
+						}
 						else
 							tmp.heuristic_val = opp_player_size - cur_player_size;
 					}
 					else
 					{
-						if(opp_player_size==0)
+						if(opp_player_size==0) {
 							tmp.heuristic_val = inf;
+//							gamesLost.add(tmp);
+						}
 						else
 							tmp.heuristic_val = cur_player_size - opp_player_size;
 					}
@@ -86,7 +95,7 @@ public class Beam_Search
 				queue.add(tz);
 				cnt++;
 				to_add.add(tz);
-				if(cnt>10000)
+				if(cnt > beam_size)
 					break;
 			}
 			win.add(to_add);
@@ -96,6 +105,23 @@ public class Beam_Search
 				break;
 			}
 		}
-		System.out.println(player);
+//		System.out.println(player);
+		System.out.println(gamesWon.size());
+
+		System.out.println(printPath(gamesWon.get(0)));
+	}
+
+	public static String printPath(Board b) {
+		Stack s = new Stack<Board>();
+		StringBuilder sb = new StringBuilder();
+		while (b.parent != null) {
+			s.push(b);
+			b = b.parent;
+		}
+		while (!s.isEmpty()) {
+			sb.append(s.pop());
+			sb.append("\n");
+		}
+		return sb.toString();
 	}
 }

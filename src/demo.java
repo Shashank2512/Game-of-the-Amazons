@@ -1,9 +1,9 @@
 /*
  * @author: Ashish Khatkar and Prasant Chidella
  */
-public class demo 
+public class demo
 {
-	public static void main(String[] args) 
+	public static void main(String[] args)
 	{
 		Board b = new Board(4);
 		Beam_Search bs = new Beam_Search();
